@@ -1,0 +1,198 @@
+:root {
+  --purple: #4b456f;
+  --orange: #fe8402;
+  --lightGray: #f8f8f8;
+  --white: #fff;
+  --dark: #000;
+  --darkGray: #333;
+  --blue: #516cf0;
+  --darkBlue: #3b455a;
+}
+
+img {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.justify-space-evenly {
+  justify-content: space-evenly;
+}
+
+.btn {
+  padding: 0.7em 4.5em;
+  border: none;
+  border-radius: 0.2em;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.9em;
+}
+
+.input {
+  color: #333333;
+  font-size: 16px;
+  max-height: 50px;
+  padding: 12px;
+  outline: none;
+  border: 0 none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input:focus {
+  border-bottom: 2px solid #fe8402;
+}
+
+form .input,
+form .textarea {
+  width: 100%;
+  color: #333333;
+  font-size: 16px;
+  padding: 12px;
+  outline: none;
+  border: 0 none;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.border-none {
+  border: none;
+}
+.center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: .5em;
+}
+
+.mb-1 {
+  margin-bottom: .5em;
+}
+
+/* colors */
+
+.col-1 {
+  color: var(--purple);
+}
+
+.col-2 {
+  color: var(--orange);
+}
+
+.col-3 {
+  color: var(--lightGray);
+}
+
+.col-4 {
+  color: var(--darkBlue);
+}
+
+.col-5 {
+  color: var(--white);
+}
+
+.col-6 {
+  color: var(--blue);
+}
+
+/* background color */
+
+.bg-1 {
+  background-color: var(--blue);
+}
+
+.bg-2 {
+  background-color: var(--purple);
+}
+
+.bg-3 {
+  background-color: var(--orange);
+}
+
+.bg-4 {
+  background-color: var(--lightGray);
+}
+
+.bg-5 {
+  background-color: var(--white);
+}
+
+.transition {
+  transition: all 0.2s ease-in-out;
+}
+
+.link-1:hover {
+  color: var(--orange);
+}
+
+.link-3:hover {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+.link-2:hover {
+  color: var(--purple);
+}
+
+.btn-1:hover {
+  cursor: pointer;
+  background-color: var(--orange);
+}
+
+.btn-2:hover {
+  cursor: pointer;
+  background-color: var(--purple);
+}
+
+.animation {
+  transform: translateX(-110%);
+  animation: slide-in 0.4s ease 1 forwards alternate;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-90%);
+    opacity: .2;
+  }
+  10% {
+    transform: translateX(-110%);
+    opacity: .5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

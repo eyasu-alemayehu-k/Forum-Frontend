@@ -1,0 +1,33 @@
+.question {
+    width: 100%;
+    gap: 3em;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.question__form a{
+    color: #4b456f;
+    margin-bottom: .5em;
+    text-decoration: none;
+}
+
+.question__form a:hover{
+    text-decoration: underline;
+}
+
+.question__description ul li{
+    margin-bottom: .5em;
+}
+
+.question__form {
+    width: 60vw;
+    padding: 2em 4em;
+    box-shadow:5px 5px 5px 1px #e6e4e4 ;
+    border-radius: .5em;
+    text-align: center;
+}
+
+.question__form form {
+    padding: 1em 0;
+}
+

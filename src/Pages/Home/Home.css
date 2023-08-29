@@ -1,0 +1,88 @@
+.home {
+    width: 100%;
+    min-height: 100vh;
+    padding: 1em;
+}
+
+.home__container {
+    width : 70vw;
+}
+
+.home__header {
+    height: 100px;
+}
+
+
+.home__questions h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    padding: .4em 0;
+    
+}
+
+
+.home__search input {
+    width: 25vw;
+    color: #333333;
+    font-size: 16px;
+    height: 50px;
+    padding: 12px 40px;
+    outline: none;
+    border: 0 none;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}
+
+.home__search input:focus {
+    border: 1px solid #fe8402;
+}
+
+.home__search form {
+    position: relative;
+}
+
+.home__search .search__icon {
+    position: absolute;
+    top: 30%;
+    left: 10px;
+    color: var(--darkGray);
+    z-index: 10;
+}
+
+.home_welcome {
+    width: 200px;
+    height: 150px;
+    background: url("../../../public/wood.png") no-repeat;
+    background-size: contain;
+    position: relative;
+    transition: all .5s;
+}
+.home_welcome h2 {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    bottom:24%;
+    left: 25%;
+    font-size: 1.1em;
+    color: #e6e3e3;
+    mix-blend-mode:screen;
+    background: #000;
+    
+}
+
+.home_welcome:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.home__question--btn {
+    width: 100%;
+    justify-content: flex-end;
+    margin: 1em 0;
+    margin-right: 2em;
+}
+
+.home__question--btn a {
+    border-radius: 1em;
+    padding: 1em 2em;
+}

@@ -1,0 +1,66 @@
+.profile {
+  width: 100%;
+  min-height: 50em;
+}
+
+.profile__card {
+  width: 500px;
+  height: 450px;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.profile__card img {
+  width: 10em;
+  height: 10em;
+  margin-top: -150px;
+  object-fit: contain;
+}
+
+.profile__info p {
+  font-size: 1.4em;
+  margin-top: 0.5em;
+  font-weight: bold;
+  gap: .5em;
+}
+
+.profile__info p .left {
+    flex: 1;
+}
+
+.profile__info p .right {
+    flex: 2;
+    position: relative;
+}
+
+.profile__info p .right .edit_icon{
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    color: #888;
+}
+
+.profile__info p .right .edit_icon:hover {
+    cursor: pointer;
+    color: #fe8402;
+}
+
+.profile__info p span input {
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.profile__button button {
+  margin-top: 1.5em;
+  background: #516cf0;
+}
+.profile__button button:hover {
+  cursor: pointer;
+  background: #fe8402;
+}
