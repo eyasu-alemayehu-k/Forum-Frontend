@@ -45,7 +45,6 @@ function App() {
     checkLoggedIn();
   }, [setUserData]);
 
-  console.log(first)
 
   return (
     <Router>
