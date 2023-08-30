@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
-import axios from "axios";
 import SharedLayout from "./Shared/SharedLayout";
 import Question from "./Pages/Question/Question";
 import Answer from "./Pages/Answer/Answer";
 import Profile from "./Pages/Profile/Profile";
+import axios from "./Constant/axios";
 
 function App() {
   const [userData, setUserData] = useUserContext();
@@ -24,7 +24,7 @@ function App() {
         token = "";
       } else {
         try {
-          const userRes = await axios.get("http://localhost:2000/api/users", {
+          const userRes = await axios.get("api/users", {
             headers: { "x-auth-token": token },
           });
   

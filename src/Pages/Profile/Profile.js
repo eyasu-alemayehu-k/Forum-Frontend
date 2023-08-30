@@ -17,7 +17,7 @@ function Profile() {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.post("/users/id", {
+      const request = await axios.post("api/users/id", {
         id: userData.user.id,
       });
       // console.log(request)

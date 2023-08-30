@@ -9,7 +9,7 @@ function Display({ data, question_id, user_id, answer_view}) {
   const navigate = useNavigate();
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.post("/users/id", {
+      const request = await axios.post("api/users/id", {
         id: user_id,
       });
       // console.log(request);

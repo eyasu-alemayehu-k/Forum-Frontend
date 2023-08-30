@@ -20,7 +20,7 @@ function Question() {
         try {
           //sending user data to database to be logged in
           const questionAddRes = await axios.post(
-            "/question/add",
+            "api/question/add",
             {
                 question: form.title,
                 question_description: form.question,

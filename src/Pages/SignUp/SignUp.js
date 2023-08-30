@@ -21,7 +21,7 @@ function SignUp() {
     try {
       await axios.post("/users", form);
 
-      const loginRes = await axios.post("users/login", {
+      const loginRes = await axios.post("api/users/login", {
         email: form.email,
         password: form.password,
       });

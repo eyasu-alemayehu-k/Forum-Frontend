@@ -13,12 +13,12 @@ function Home() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (!userData.user) navigate("/login");
+    if (!userData.user) navigate("api/login");
   }, [userData.user, navigate]);
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get("/question/all");
+      const request = await axios.get("api/question/all");
       // console.log(request)
       setAllQuestions(request.data.data);
       return request;
