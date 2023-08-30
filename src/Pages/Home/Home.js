@@ -13,7 +13,7 @@ function Home() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (!userData.user) navigate("api/login");
+    if (!userData.user) navigate("/login");
   }, [userData.user, navigate]);
 
   useEffect(() => {
