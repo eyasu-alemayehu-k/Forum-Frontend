@@ -1,10 +1,11 @@
+
 :root {
   --purple: #4b456f;
   --orange: #fe8402;
   --lightGray: #f8f8f8;
   --white: #fff;
   --dark: #000;
-  --darkGray: #333;
+  --darkGray: #454545;
   --blue: #516cf0;
   --darkBlue: #3b455a;
 }
@@ -60,7 +61,7 @@ a {
 }
 
 .input {
-  color: #333333;
+  color: var(--darkGray);
   font-size: 16px;
   max-height: 50px;
   padding: 12px;
@@ -77,7 +78,7 @@ a {
 form .input,
 form .textarea {
   width: 100%;
-  color: #333333;
+  color: var(--darkGray);
   font-size: 16px;
   padding: 12px;
   outline: none;
@@ -95,11 +96,11 @@ form .textarea {
 }
 
 .mt-1 {
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 .mb-1 {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 /* colors */
@@ -185,14 +186,28 @@ form .textarea {
 @keyframes slide-in {
   0% {
     transform: translateX(-90%);
-    opacity: .2;
+    opacity: 0.2;
   }
   10% {
     transform: translateX(-110%);
-    opacity: .5;
+    opacity: 0.5;
   }
   100% {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+@media screen and (max-width : 600px) {
+  .login, .signup {
+      flex-direction: column;
+  }
+  .login__wrapper, .signup__wrapper {
+    width: 330px;
+    height: 600px;
+    padding: 40px;
+  }
+  .btn {
+    padding: 0.5em 3.5em;
   }
 }

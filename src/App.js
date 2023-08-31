@@ -8,7 +8,6 @@ import SignUp from "./Pages/SignUp/SignUp";
 import SharedLayout from "./Shared/SharedLayout";
 import Question from "./Pages/Question/Question";
 import Answer from "./Pages/Answer/Answer";
-import Profile from "./Pages/Profile/Profile";
 import axios from "./Constant/axios";
 
 function App() {
@@ -48,7 +47,7 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <div className="app">
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route
@@ -88,14 +87,6 @@ function App() {
               element={
                 <>
                   <Answer />
-                </>
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <>
-                  <Profile />
                 </>
               }
             />

@@ -40,7 +40,6 @@ function Display({ data, question_id, user_id, answer_view}) {
         </div>
         <div className="question">
           {!answer_view ? <h3>{data}</h3> : <p>{data}</p>}
-          
         </div>
       </div>
       {!answer_view ? <Link className="right__arrow" ><ArrowForwardIosIcon  /></Link> : ""}

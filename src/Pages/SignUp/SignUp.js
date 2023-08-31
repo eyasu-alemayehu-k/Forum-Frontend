@@ -3,6 +3,7 @@ import { useUserContext } from "../../Context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../Constant/axios";
 import "./Signup.css";
+import About from "../About/About";
 
 function SignUp() {
   const [form, setForm] = useState({});
@@ -19,7 +20,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("api/users", form);
+      await axios.post("/users", form);
 
       const loginRes = await axios.post("api/users/login", {
         email: form.email,
@@ -40,8 +41,8 @@ function SignUp() {
     }
   };
   return (
-    <div className="signup">
-      <div className="signup_container--wrapper">
+    <div className="signup flex align-center justify-center">
+      <div className="signup__wrapper">
         <div className="signup_container animation">
           <div className="signup__top">
             <h3 className="signup__title">Join the network</h3>
@@ -91,38 +92,21 @@ function SignUp() {
               placeholder="Password"
             />
             <br />
-            <p>
-              I agree to the <Link to="/">privacy policy</Link> and{" "}
+            <p className="terms__link">
+              I agree to the <Link to="/">privacy policy</Link> and
               <Link to="/"> terms of service</Link>.
             </p>
             <br />
             <button className="btn">Agree and Join</button>
           </form>
-          <div className="center mt-1">
-          <Link className="link-3 col-2 center " to="/login">
+          <div className=" bottom-link center mt-1">
+          <Link className=" link-3 col-2 center " to="/login">
             Already have an account?
           </Link>
           </div>
         </div>
       </div>
-      <div className="signup__about">
-        <p className="signup__about--title">About</p>
-        <div className="about__detail">
-          <h1>Evangadi Newtorks Q&A</h1>
-          <p>
-            No matter what stage of life you are in, wheather you’re just
-            starting elementary school or being promoted to CEO of a Fortune 500
-            company, you have much to offer to those who are trying to follow in
-            your footsteps.
-            <br />
-            <br />
-            Wheather you are willing to share your knowledge or you are just
-            looking to meet mentors of your own, please start by joining the
-            network here.
-          </p>
-        </div>
-        <button className="border-none col-5">HOW IT WORKS</button>
-      </div>
+        <About />
     </div>
   );
 }

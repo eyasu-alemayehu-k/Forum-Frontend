@@ -6,7 +6,7 @@
 }
 
 .question__form a{
-    color: #4b456f;
+    color: var(--purple);
     margin-bottom: .5em;
     text-decoration: none;
 }
@@ -15,6 +15,9 @@
     text-decoration: underline;
 }
 
+.question__description ul{
+    margin-left: 30px;
+}
 .question__description ul li{
     margin-bottom: .5em;
 }
@@ -31,3 +34,18 @@
     padding: 1em 0;
 }
 
+.question__form form button {
+    font-weight: normal;
+}
+@media screen and (max-width: 600px) {
+    .question__form {
+        width: 90vw;
+        padding: 2em 2em;
+        font-size: 12px;
+    }
+
+    .question__form .input,
+    .question__form .textarea {
+        font-size: 12px;
+    }
+ }

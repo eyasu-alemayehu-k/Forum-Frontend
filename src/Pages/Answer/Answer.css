@@ -14,7 +14,7 @@
 }
 
 .answer__question h3{
-    color: #464545;
+    color: var(--darkGray);
     margin: 0 .5em;
 }
 .answer__question p {
@@ -22,7 +22,7 @@
 }
 
 .answer_title h2{
-    color: #464545;
+    color: var(--darkGray);
     margin: 1em 0;
     padding: .5em 0;
     border-top : 1px solid #ddd;
@@ -31,7 +31,7 @@
 }
 
 .answer__form a{
-    color: #4b456f;
+    color: var(--purple);
     margin-bottom: .5em;
 }
 
@@ -59,4 +59,31 @@
 
 .answer__form form textarea {
     width: 100%;
+}
+
+
+@media screen and (max-width: 600px) { 
+    .answer_title h2,
+    .answer__question h3{
+        font-size: 16px;
+    }
+    .answer__question p,
+    .answer__form .textarea ,
+    .answer__form a{
+        font-size: 14px;
+    }
+    .answer__question h1,
+    .answer__form h1 {
+        font-size: 20px;
+    }
+    .answer__form {
+        width: 90vw;
+        padding: 2em 2em;
+    }
+    .answer__form .btn {
+        font-size: 14px;
+        font-weight: normal;
+    }
+    
+    
 }

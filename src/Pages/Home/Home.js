@@ -34,26 +34,26 @@ function Home() {
           <div className="home_welcome" onClick={() => navigate("/profile")}>
             <h2 className="flex-column align-center center">
               <p>Welcome</p>
-              <Link to="/profile">{userData.user?.display_name}</Link>
+              <Link to="/">{userData.user?.display_name}</Link>
             </h2>
           </div>
-          <div className="home__search">
-            <form>
-              <SearchIcon className="search__icon" />
-              <input
-                className="transition"
-                type="text"
-                name="search"
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search questions"
-              />
-            </form>
+          <div className="home__question--btn">
+            <Link className="btn col-5 bg-1 btn-1 transition" to="/question">
+              Ask Question
+            </Link>
           </div>
         </div>
-        <div className="home__question--btn flex">
-          <Link className="btn col-5 bg-1 btn-1 transition" to="/question">
-            Ask Question
-          </Link>
+        <div className="home__search flex">
+          <form>
+            <SearchIcon className="search__icon" />
+            <input
+              className="transition"
+              type="text"
+              name="search"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search questions"
+            />
+          </form>
         </div>
         <div className="home__questions">
           <h2>Questions</h2>
@@ -65,12 +65,12 @@ function Home() {
                   : items.question.toLowerCase().includes(search.toLowerCase());
               })
               .map((items) => (
-                 <Display
-                    key={items.question_id}
-                    data={items.question}
-                    question_id={items.question_id}
-                    user_id={items.user_id}
-                  />
+                <Display
+                  key={items.question_id}
+                  data={items.question}
+                  question_id={items.question_id}
+                  user_id={items.user_id}
+                />
               ))}
           </div>
         </div>
