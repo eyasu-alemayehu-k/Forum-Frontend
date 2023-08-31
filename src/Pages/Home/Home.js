@@ -20,7 +20,8 @@ function Home() {
     async function fetchData() {
       const request = await axios.get("api/question/all");
       // console.log(request)
-      setAllQuestions(request.data.data);
+      const reverseQuestions = request.data.data.reverse();
+      setAllQuestions(reverseQuestions);
       return request;
     }
     fetchData();

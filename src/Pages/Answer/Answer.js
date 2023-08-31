@@ -62,7 +62,9 @@ function Answer() {
         qid: qid,
       });
       // console.log(request)
-      setAllAnswers(request.data.data);
+      const reverseAnswer = request.data.data.reverse()
+      setAllAnswers(reverseAnswer);
+      
       return request;
     }
     fetchData();
