@@ -20,7 +20,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/users", form);
+      await axios.post("api/users", form);
 
       const loginRes = await axios.post("api/users/login", {
         email: form.email,
