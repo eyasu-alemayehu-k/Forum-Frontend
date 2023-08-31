@@ -28,9 +28,13 @@ function Display({ data, question_id, user_id, answer_view}) {
     });
   };
   
+  let column = ""
+  if(answer_view) {
+    column = "column"
+  }
   return (
     <div className="display flex align-center justify-space-between transition" onClick={()=>openAnswersPage(question_id)}>
-      <div className="display__container flex align-center justify-space-between">
+      <div className={`display__container flex align-center justify-space-between ${column}`} >
         <div className="avatar">
           <img
             src="/avatar.png"

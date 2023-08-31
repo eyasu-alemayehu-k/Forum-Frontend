@@ -72,7 +72,7 @@
     .avatar {
         width: 200px;
     }
-    .display__container {
+    .column {
         flex-direction: column;
     }
 }
