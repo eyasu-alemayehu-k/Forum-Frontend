@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const checkLoggedIn = async () => {
       let token = localStorage.getItem("auth-token");
-  
+
       if (!token) {
         localStorage.setItem("auth-token", "");
         token = "";
@@ -26,7 +26,7 @@ function App() {
           const userRes = await axios.get("api/users", {
             headers: { "x-auth-token": token },
           });
-  
+
           setUserData({
             token,
             user: {
@@ -40,56 +40,20 @@ function App() {
         }
       }
     };
-  
+
     checkLoggedIn();
   }, [setUserData]);
-
 
   return (
     <Router>
       <div className="app">
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-            <Route
-              path="/signup"
-              element={
-                <>
-                  <SignUp />
-                </>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <>
-                  <Login />
-                </>
-              }
-            />
-            <Route
-              path="/"
-              element={
-                <>
-                  <Home />
-                </>
-              }
-            />
-            <Route
-              path="/question"
-              element={
-                <>
-                  <Question />
-                </>
-              }
-            />
-            <Route
-              path="/answer"
-              element={
-                <>
-                  <Answer />
-                </>
-              }
-            />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/question" element={<Question />} />
+            <Route path="/answer" element={<Answer />} />
           </Route>
         </Routes>
       </div>

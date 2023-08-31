@@ -4,6 +4,7 @@ import axios from "../../Constant/axios";
 import { useEffect, useState } from "react";
 import { useUserContext } from "../../Context/UserContext";
 import Display from "../Display/Display";
+import { useNavigate } from "react-router-dom";
 
 function Answer() {
   const [userData] = useUserContext();
@@ -11,6 +12,11 @@ function Answer() {
   const [getQuestion, setQuestion] = useState([]);
   const [form, setForm] = useState({});
   const [allAnswers, setAllAnswers] = useState([]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userData.user) navigate("/login");
+  }, [userData.user, navigate]);
 
   let qid = searchparams.get("id");
   useEffect(() => {

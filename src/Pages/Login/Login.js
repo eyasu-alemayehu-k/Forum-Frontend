@@ -9,6 +9,7 @@ function Login() {
   const [userData, setUserData] = useUserContext();
   const navigate = useNavigate();
   const [form, setForm] = useState({});
+  const [error , setError] = useState('');
 
   console.log(userData);
 
@@ -34,13 +35,18 @@ function Login() {
       navigate("/");
     } catch (err) {
       console.log("problem", err.response.data.msg);
-      alert(err.response.data.msg);
+      setError(err.response.data.msg);
     }
   };
 
   return (
     <div className="login flex align-center justify-center">
       <div className="login__wrapper">
+        <div >
+          {
+           error ?  <p className="error">{error}</p> : ''
+          }
+        </div>
         <div className="login_container animation">
           <div className="login__top">
             <h3 className="login__title col-1">Login to your account</h3>

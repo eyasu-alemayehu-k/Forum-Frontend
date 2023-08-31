@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUserContext } from '../../Context/UserContext';
 import './Question.css'
 import { Link, useNavigate } from 'react-router-dom'
@@ -11,6 +11,10 @@ function Question() {
     const navigate = useNavigate();
     const [form, setForm] = useState({});
   
+    useEffect(() => {
+      if (!userData.user) navigate("/login");
+    }, [userData.user, navigate]);
+
     const handleChange = (e) => {
       setForm({ ...form, [e.target.name]: e.target.value });
     };
