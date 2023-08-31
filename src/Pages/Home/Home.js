@@ -31,7 +31,7 @@ function Home() {
     <div className="home flex justify-center">
       <div className="home__container">
         <div className="home__header flex align-center justify-space-between">
-          <div className="home_welcome" onClick={() => navigate("/profile")}>
+          <div className="home_welcome">
             <h2 className="flex-column align-center center">
               <p>Welcome</p>
               <Link to="/">{userData.user?.display_name}</Link>
