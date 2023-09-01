@@ -1,51 +1,65 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import "./Login.css";
-import { useUserContext } from "../../Context/UserContext";
+import { useErrorContext, useUserContext } from "../../Context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../Constant/axios";
 import About from "../About/About";
 
 function Login() {
   const [userData, setUserData] = useUserContext();
+  const [error, setError] = useErrorContext();
   const navigate = useNavigate();
   const [form, setForm] = useState({});
-  const [error , setError] = useState('');
-
-  console.log(userData);
+  const [empty, setEmpty] = useState({
+    empty_email: false,
+    empty_password: false,
+  });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   // console.log("form ", form)
+
+  console.log(userData);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const loginRes = await axios.post("api/users/login", {
-        email: form.email,
-        password: form.password,
-      });
+    if (!form.email) {
+      setError("");
+      setEmpty({ empty_email: true });
+    } else if (!form.password) {
+      setError("");
+      setEmpty({ empty_password: true });
+    } else if (Object.keys(form.password).length < 8) {
+      setError("Password length must be at least 8 characters!");
+    } else {
+      try {
+        const loginRes = await axios.post("api/users/login", {
+          email: form.email,
+          password: form.password,
+        });
 
-      setUserData({
-        token: loginRes.data.token,
-        user: loginRes.data.user,
-      });
+        setUserData({
+          token: loginRes.data.token,
+          user: loginRes.data.user,
+        });
 
-      localStorage.setItem("auth-token", loginRes.data.token);
+        localStorage.setItem("auth-token", loginRes.data.token);
 
-      navigate("/");
-    } catch (err) {
-      console.log("problem", err.response.data.msg);
-      setError(err.response.data.msg);
+        navigate("/");
+      } catch (err) {
+        console.log("problem", err.response.data.msg);
+        setError(err.response.data.msg);
+      }
     }
   };
+
+  
 
   return (
     <div className="login flex align-center justify-center">
       <div className="login__wrapper">
-        <div >
-          {
-           error ?  <p className="error">{error}</p> : ''
-          }
+        <div className="error">
+          {error ? <p className="error-alert">{error}</p> : ""}
         </div>
         <div className="login_container animation">
           <div className="login__top">
@@ -59,6 +73,7 @@ function Login() {
           </div>
           <form onSubmit={handleSubmit}>
             <input
+              className={`input ${empty.empty_email && "input_danger"}`}
               type="text"
               name="email"
               onChange={handleChange}
@@ -66,6 +81,7 @@ function Login() {
             />
             <br />
             <input
+              className={`input ${empty.empty_password && "input_danger"}`}
               type="password"
               name="password"
               onChange={handleChange}

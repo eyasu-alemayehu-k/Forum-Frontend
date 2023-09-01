@@ -1,20 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useUserContext } from "../../Context/UserContext";
+import { useErrorContext, useUserContext } from "../../Context/UserContext";
 import { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "../../Constant/axios";
 import Display from "../Display/Display";
 import SearchIcon from "@mui/icons-material/Search";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 function Home() {
   const [userData] = useUserContext();
   const [allQuestions, setAllQuestions] = useState([]);
   const [search, setSearch] = useState("");
+  const [error, setError] = useErrorContext();
+  const [count, setCount] = useState(3);
+
+  let loginAttempt = 0;
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (!userData.user) navigate("/login");
-  }, [userData.user, navigate]);
+    if (!userData.user) {
+      if (loginAttempt > 0) setError("Please Login into you account first");
+      loginAttempt++;
+      navigate("/login");
+    }
+  }, [userData.user, navigate, setError, loginAttempt]);
+  console.log(error);
 
   useEffect(() => {
     async function fetchData() {
@@ -27,6 +37,12 @@ function Home() {
     fetchData();
   }, [userData.user]);
   // console.log(allQuestions);
+
+  const incrementByTen = () => {
+    setCount(count + 3);
+  };
+
+  console.log(count);
 
   return (
     <div className="home flex justify-center">
@@ -65,14 +81,24 @@ function Home() {
                   ? items
                   : items.question.toLowerCase().includes(search.toLowerCase());
               })
-              .map((items) => (
-                <Display
-                  key={items.question_id}
-                  data={items.question}
-                  question_id={items.question_id}
-                  user_id={items.user_id}
-                />
-              ))}
+              .map(
+                (items, index) =>
+                  index < count && (
+                    <Display
+                      key={items.question_id}
+                      data={items.question}
+                      question_id={items.question_id}
+                      user_id={items.user_id}
+                    />
+                  )
+              )}
+            <div className="question__more">
+              <div className="more__btn" onClick={incrementByTen}>
+                <button className="btn">
+                  <span>More Results</span> <KeyboardArrowDownIcon />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

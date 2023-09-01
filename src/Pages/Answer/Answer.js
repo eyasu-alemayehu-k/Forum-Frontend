@@ -48,7 +48,7 @@ function Answer() {
         question_id: qid,
       });
 
-      setForm({})
+      setForm({});
       alert(questionAddRes.data.msg);
     } catch (err) {
       console.log("problem", err.response.data.msg);
@@ -62,9 +62,8 @@ function Answer() {
         qid: qid,
       });
       // console.log(request)
-      const reverseAnswer = request.data.data.reverse()
+      const reverseAnswer = request.data.data.reverse();
       setAllAnswers(reverseAnswer);
-      
       return request;
     }
     fetchData();
@@ -78,7 +77,7 @@ function Answer() {
           {getQuestion.map((items) => (
             <div>
               <div className="answer__question">
-                <h1 className='mb-1 col-1'>Questions</h1>
+                <h1 className="mb-1 col-1">Questions</h1>
                 <h3>{items.question}</h3>
                 <p>🤔 {items.question_description}</p>
               </div>
@@ -100,7 +99,7 @@ function Answer() {
           </div>
         </div>
         <div className="answer__form">
-          <h1 className='mb-1 col-1'>Answer The Top Question</h1>
+          <h1 className="mb-1 col-1">Answer The Top Question</h1>
           <Link to="/">Go to Question page</Link>
           <form onSubmit={handleSubmit}>
             <textarea

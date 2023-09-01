@@ -49,9 +49,9 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<SharedLayout />}>
+            <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Home />} />
             <Route path="/question" element={<Question />} />
             <Route path="/answer" element={<Answer />} />
           </Route>

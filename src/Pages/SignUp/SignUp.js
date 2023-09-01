@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useUserContext } from "../../Context/UserContext";
+import { useErrorContext, useUserContext } from "../../Context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../Constant/axios";
 import "./Signup.css";
@@ -8,6 +8,7 @@ import About from "../About/About";
 function SignUp() {
   const [form, setForm] = useState({});
   const navigate = useNavigate();
+  const [error, setError] = useErrorContext();
 
   //importing global state from context
   const [userData, setUserData] = useUserContext();
@@ -15,7 +16,7 @@ function SignUp() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  console.log(userData)
+  console.log(userData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,12 +38,15 @@ function SignUp() {
       navigate("/");
     } catch (err) {
       console.log("problem ==>", err.response.data.msg);
-      alert(err.response.data.msg);
+      setError(err.response.data.msg);
     }
   };
   return (
     <div className="signup flex align-center justify-center">
       <div className="signup__wrapper">
+        <div className="error">
+          {error ? <p className="error-alert">{error}</p> : ""}
+        </div>
         <div className="signup_container animation">
           <div className="signup__top">
             <h3 className="signup__title">Join the network</h3>
@@ -100,13 +104,13 @@ function SignUp() {
             <button className="btn">Agree and Join</button>
           </form>
           <div className=" bottom-link center mt-1">
-          <Link className=" link-3 col-2 center " to="/login">
-            Already have an account?
-          </Link>
+            <Link className=" link-3 col-2 center " to="/login">
+              Already have an account?
+            </Link>
           </div>
         </div>
       </div>
-        <About />
+      <About />
     </div>
   );
 }

@@ -10,11 +10,13 @@
 
 .signup__wrapper {
   width: 580px;
+  height: 550px;
   padding: 3em;
   box-shadow: 0 0 5px 1px #ebebeb;
   border-radius: 0.5em;
   background: var(--white);
   overflow: hidden;
+  position: relative;
 }
 
 .signup__top {
@@ -102,7 +104,7 @@
     flex-direction: column;
   }
   .signup__wrapper {
-    width: 360px;
+    width: 90vw;
     height: 640px;
     padding: 40px;
   }

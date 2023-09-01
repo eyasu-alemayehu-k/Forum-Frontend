@@ -1,4 +1,4 @@
-import { useUserContext } from "../../Context/UserContext";
+import { useErrorContext, useUserContext } from "../../Context/UserContext";
 import { useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
@@ -8,7 +8,9 @@ import CloseIcon from "@mui/icons-material/Close";
 function Header() {
   const [userData, setUserData] = useUserContext();
   const [toggle, setToggle] = useState(true);
+  const [error, setError] = useErrorContext()
 
+  console.log(error)
   const logout = () => {
     setUserData({
       token: undefined,
@@ -18,6 +20,7 @@ function Header() {
     //resetting localStorage
     localStorage.setItem("auth-token", "");
     setToggle(true);
+    setError('')
   };
   // console.log(toggle);
 

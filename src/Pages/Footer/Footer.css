@@ -3,8 +3,6 @@
   background-color: #3b455a;
   padding: 4em 2em;
   color: #fff;
-  position: relative;
-  bottom: 0;
 }
 
 .footer__container {
@@ -47,6 +45,13 @@
   border-radius: 50%;
   text-align: center;
   transition: all 0.9s;
+}
+
+.footer .footer-social-list li i{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3px;
 }
 
 .footer .footer-social-list li:hover {
