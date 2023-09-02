@@ -112,7 +112,7 @@ function Answer() {
               placeholder="Your Answer..."
             ></textarea>
             <br />
-            <button className="btn btn-1 bg-2">Post Your Answer</button>
+            <button className="btn btn-1 bg-2" disabled={form.answer ? false : true}>Post Your Answer</button>
           </form>
         </div>
       </div>

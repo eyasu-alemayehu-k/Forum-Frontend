@@ -13,7 +13,6 @@ function Home() {
   const [search, setSearch] = useState("");
   const [count, setCount] = useCountContext(3);
 
-
   const navigate = useNavigate();
   useEffect(() => {
     if (!userData.user) {
@@ -33,11 +32,9 @@ function Home() {
   }, [userData.user]);
   // console.log(allQuestions);
 
-  const incrementByTen = () => {
+  const increment = () => {
     setCount(count + 3);
   };
-
-  console.log(count);
 
   return (
     <div className="home flex justify-center">
@@ -88,9 +85,14 @@ function Home() {
                   )
               )}
             <div className="question__more">
-              <div className="more__btn" onClick={incrementByTen}>
+              <div className="more__btn" onClick={increment}>
                 <button className="btn">
-                  <span>{ count < allQuestions.length ? "More Results" : "Result End"}</span> { count < allQuestions.length ?<KeyboardArrowDownIcon /> : ""}
+                  <span>
+                    {count < allQuestions.length
+                      ? "More Results"
+                      : "Result End"}
+                  </span>{" "}
+                  {count < allQuestions.length ? <KeyboardArrowDownIcon /> : ""}
                 </button>
               </div>
             </div>

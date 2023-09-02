@@ -60,6 +60,16 @@ a {
   font-size: 0.9em;
 }
 
+button[disabled=disabled], button:disabled {
+  background: var(--lightGray);
+  color: #8f8e8e;
+}
+
+button[disabled=disabled]:hover, button:disabled:hover {
+  background: var(--lightGray);
+  color: #8f8e8e;
+}
+
 .input {
   color: var(--darkGray);
   font-size: 16px;
@@ -226,5 +236,8 @@ form .textarea {
   }
   .btn {
     padding: 0.5em 3.5em;
+  }
+  .error-alert {
+    font-size: 11px;
   }
 }

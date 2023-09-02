@@ -60,8 +60,9 @@ function SignUp() {
 
           <form onSubmit={handleSubmit}>
             <input
-              type="text"
+              type="email"
               name="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               onChange={handleChange}
               placeholder="Email Address"
             />
