@@ -1,13 +1,13 @@
 import React, {  useState } from "react";
 import "./Login.css";
-import { useErrorContext, useUserContext } from "../../Context/UserContext";
+import {  useUserContext } from "../../Context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../Constant/axios";
 import About from "../About/About";
 
 function Login() {
   const [userData, setUserData] = useUserContext();
-  const [error, setError] = useErrorContext();
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const [form, setForm] = useState({});
   const [empty, setEmpty] = useState({

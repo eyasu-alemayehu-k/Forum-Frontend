@@ -1,23 +1,23 @@
 import React, { createContext, useContext, useState } from "react";
 
 const UserContext = createContext();
-const ErrorContext = createContext();
+const CountContext = createContext();
 
 export const useUserContext = () => useContext(UserContext);
-export const useErrorContext = () => useContext(ErrorContext);
+export const useCountContext = () => useContext(CountContext);
 
 export function UserProvider({ children }) {
   const [userData, setUserData] = useState({
     user: undefined,
     token: undefined,
   });
-  const [error, setError] = useState("");
+  const [count, setCount] = useState(3);
 
   return (
-    <ErrorContext.Provider value={[error, setError]}>
+    <CountContext.Provider value={[count, setCount]}>
       <UserContext.Provider value={[userData, setUserData]}>
         {children}
       </UserContext.Provider>
-    </ErrorContext.Provider>
+    </CountContext.Provider>
   );
 }

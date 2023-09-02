@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useErrorContext, useUserContext } from "../../Context/UserContext";
+import { useCountContext, useUserContext } from "../../Context/UserContext";
 import { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "../../Constant/axios";
@@ -11,20 +11,15 @@ function Home() {
   const [userData] = useUserContext();
   const [allQuestions, setAllQuestions] = useState([]);
   const [search, setSearch] = useState("");
-  const [error, setError] = useErrorContext();
-  const [count, setCount] = useState(3);
+  const [count, setCount] = useCountContext(3);
 
-  let loginAttempt = 0;
 
   const navigate = useNavigate();
   useEffect(() => {
     if (!userData.user) {
-      if (loginAttempt > 0) setError("Please Login into you account first");
-      loginAttempt++;
       navigate("/login");
     }
-  }, [userData.user, navigate, setError, loginAttempt]);
-  console.log(error);
+  }, [userData.user, navigate]);
 
   useEffect(() => {
     async function fetchData() {
@@ -95,7 +90,7 @@ function Home() {
             <div className="question__more">
               <div className="more__btn" onClick={incrementByTen}>
                 <button className="btn">
-                  <span>More Results</span> <KeyboardArrowDownIcon />
+                  <span>{ count < allQuestions.length ? "More Results" : "Result End"}</span> { count < allQuestions.length ?<KeyboardArrowDownIcon /> : ""}
                 </button>
               </div>
             </div>
