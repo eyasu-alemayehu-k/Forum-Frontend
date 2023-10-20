@@ -54,8 +54,10 @@
   border-radius: 4px;
 }
 
-.login_container input:focus {
-  border-bottom: 2px solid var(--orange);
+.login_container .input:focus {
+  border-radius: 4px 4px 0px 0px;
+  border-bottom: 2px solid #fe8402;
+  outline: none;
 }
 
 .login_container form button {

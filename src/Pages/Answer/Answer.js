@@ -48,7 +48,7 @@ function Answer() {
         question_id: qid,
       });
 
-      setForm({});
+      setForm({ ...form, answer : ""});
       alert(questionAddRes.data.msg);
     } catch (err) {
       console.log("problem", err.response.data.msg);
@@ -93,6 +93,7 @@ function Answer() {
                   question_id={items.question_id}
                   user_id={items.user_id}
                   answer_view
+                  date={items.answer_date}
                 />
               ))}
             </div>
@@ -105,6 +106,7 @@ function Answer() {
             <textarea
               className="textarea"
               name="answer"
+              value={form.answer}
               onChange={handleChange}
               id=""
               cols="60"

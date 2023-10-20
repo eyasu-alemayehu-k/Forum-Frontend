@@ -53,7 +53,29 @@ function Login() {
     }
   };
 
-  
+  const demoLogin = async () => {
+    form.email = "demo@gmail.com"
+    form.password = "demodemo";
+
+    try {
+      const loginRes = await axios.post("api/users/login", {
+        email: form.email,
+        password: form.password,
+      });
+
+      setUserData({
+        token: loginRes.data.token,
+        user: loginRes.data.user,
+      });
+
+      localStorage.setItem("auth-token", loginRes.data.token);
+
+      navigate("/");
+    } catch (err) {
+      console.log("problem", err.response.data.msg);
+      setError(err.response.data.msg);
+    }
+  };
 
   return (
     <div className="login flex align-center justify-center">
@@ -84,7 +106,6 @@ function Login() {
               className={`input ${empty.empty_password && "input_danger"}`}
               type="password"
               name="password"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               onChange={handleChange}
               placeholder="Password"
             />
@@ -94,7 +115,12 @@ function Login() {
             </div>
             <button className="btn">Login</button>
           </form>
+            <p className="btn">Demo Login</p>
           <div className="bottom-link center mt-1">
+            <Link className="link-3 col-2 center " onClick={demoLogin}>
+              Demo Login
+            </Link>
+            <br />
             <Link className="link-3 col-2 center " to="/signup">
               Create a new account?
             </Link>

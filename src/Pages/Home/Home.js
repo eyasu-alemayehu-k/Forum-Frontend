@@ -11,7 +11,9 @@ function Home() {
   const [userData] = useUserContext();
   const [allQuestions, setAllQuestions] = useState([]);
   const [search, setSearch] = useState("");
+  const [active, setActive] = useState("all");
   const [count, setCount] = useCountContext(3);
+  const [questionCount, setQuestionCount] = useState(0);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -20,21 +22,49 @@ function Home() {
     }
   }, [userData.user, navigate]);
 
+  if(active === 'all') {
+    
+  }
+
   useEffect(() => {
-    async function fetchData() {
+    async function fetchAllData() {
       const request = await axios.get("api/question/all");
       // console.log(request)
-      const reverseQuestions = request.data.data.reverse();
-      setAllQuestions(reverseQuestions);
+      setAllQuestions(request.data.data);
       return request;
     }
-    fetchData();
-  }, [userData.user]);
-  // console.log(allQuestions);
+    async function fetchAnsweredData() {
+      const request = await axios.get("api/answer/answered");
+      // console.log(request)
+      setAllQuestions(request.data.data);
+      return request;
+    }
+    async function fetchUnansweredData() {
+      const request = await axios.get("api/answer/unanswered");
+      // console.log(request)
+      setAllQuestions(request.data.data);
+      return request;
+    }
+
+    if(active === 'all') fetchAllData();
+    else if(active === 'answered') fetchAnsweredData();
+    else if(active === 'unanswered') fetchUnansweredData();
+
+  }, [userData.user, active]);
 
   const increment = () => {
     setCount(count + 3);
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get("api/question/count");
+      // console.log(request);
+      setQuestionCount(request.data["data"][0]["COUNT(*)"]);
+      return request;
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className="home flex justify-center">
@@ -60,12 +90,34 @@ function Home() {
               type="text"
               name="search"
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search questions"
+              placeholder="Search Questions..."
             />
           </form>
         </div>
         <div className="home__questions">
-          <h2>Questions</h2>
+          <div className="home__heading">
+            <h2>Questions</h2>
+            <div className="home__filter">
+              <button
+                className={`btn ${active === "all" ? "active" : ""}`}
+                onClick={()=>setActive("all")}
+              >
+                All <div><span>{questionCount}</span></div>
+              </button>
+              <button
+                className={`btn ${active === "answered" ? "active" : ""}`}
+                onClick={()=>setActive("answered")}
+              >
+                Answered
+              </button>
+              <button
+                className={`btn ${active === "unanswered" ? "active" : ""}`}
+                onClick={()=>setActive("unanswered")}
+              >
+                Unanswered
+              </button>
+            </div>
+          </div>
           <div className="question_content">
             {allQuestions
               .filter((items) => {
@@ -81,6 +133,7 @@ function Home() {
                       data={items.question}
                       question_id={items.question_id}
                       user_id={items.user_id}
+                      date={items.ask_date}
                     />
                   )
               )}

@@ -30,6 +30,7 @@ function Question() {
       });
 
       alert(questionAddRes.data.msg);
+      setForm({});
       //navigate user to homepage
       navigate("/");
     } catch (err) {
@@ -59,6 +60,7 @@ function Question() {
             name="title"
             onChange={handleChange}
             placeholder="Question Title"
+            value={form.title}
           />
           <br />
           <textarea
@@ -68,8 +70,8 @@ function Question() {
             cols="60"
             rows="10"
             placeholder="Question Description..."
+            value={form.question}
           ></textarea>
-          <br />
           <button
             className="btn btn-1 bg-2"
             disabled={form.title && form.question ? false : true}

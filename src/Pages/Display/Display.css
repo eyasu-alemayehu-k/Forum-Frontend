@@ -4,7 +4,7 @@
     background-color: var(--lightGray);
     margin-bottom: 1em;
     border-radius: 1em;
-    box-shadow: 0 0 2px 1px #b3b3b3;
+    box-shadow: 0 0 2px 1px #eee;
 }
 
 .display__container {
@@ -33,7 +33,7 @@
 .right__arrow {
     background: transparent;
     color: rgb(31, 30, 30);
-}
+}b3b3b3
 
 .right__arrow:hover {
     color: var(--orange);
@@ -43,13 +43,62 @@
     font-weight: normal;
 }
 
+.question__content {
+    position: relative;
+}
+
+.question__content .question__detail {
+    position: absolute;
+    right: 0;
+    bottom: -120%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.question__content .question__detail p{
+    font-size: 15px;
+    color: #3a3939;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.question__content .question__detail p .number{
+    display: grid;
+    place-content: center;
+    color:#fff;
+    background: #555;
+    font-weight: bold;
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.question__content .question__detail p .number span {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question__content .question__detail .question__date {
+    white-space: nowrap;
+}
+
+.answer__content .answer__date{
+    text-align: right;
+    margin-top: 10px;
+}
 @media screen  and (max-width: 600px){
     .avatar {
-        width: 150px;
+        width: 100px;
     }
     .avatar img {
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
     }
     .avatar h4 {
        font-size: 10px;
@@ -65,12 +114,29 @@
     .question p{
         font-size: 11px;
     }
+    .question {
+        gap: 0;
+        padding: 1em;
+    }
+
+    .question__content .question__detail p{
+        font-size: 10px;
+    }
+    .question__content .question__detail p .number{
+        min-width: 15px;
+        min-height: 14px;
+        margin-left: 4px;
+        font-size: 9px;
+    }
+    .question__content .question__detail {
+        justify-content: space-between;
+    }
   }
 
 
   @media screen  and (max-width: 860px){
     .avatar {
-        width: 200px;
+        width: 120px;
     }
     .column {
         flex-direction: column;
